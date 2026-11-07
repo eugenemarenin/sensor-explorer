@@ -26,7 +26,7 @@ function Explorer({ savedStations, onSelectStation, onSaveStation }) {
 
       try {
         const bbox = REGION_BBOX[region];
-        const res = await fetch(`https://api.opensensemap.org/boxes?bbox=${bbox}`);
+        const res = await fetch(`https://api.opensensemap.org/boxes?bbox=${bbox}&full=true`);
 
         if (!res.ok) {
           throw new Error(`HTTP error: ${res.status}`);
