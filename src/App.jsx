@@ -32,6 +32,7 @@ function App() {
               path="/"
               element={
                 <Explorer
+                  savedStations={savedStations}
                   onSelectStation={setSelectedStation}
                   onSaveStation={handleSaveStation}
                 />

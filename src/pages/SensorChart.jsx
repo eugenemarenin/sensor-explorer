@@ -26,7 +26,7 @@ function SensorChart({ selectedStation }) {
           <strong>Station ID:</strong> {selectedStation._id}
         </p>
         <p className="mb-0">
-          Здесь будут карточки датчиков этой станции и линейный график из библиотеки Recharts.
+          Sensors data will be displayed here.
         </p>
       </Card>
     </Container>
