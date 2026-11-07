@@ -1,17 +1,43 @@
-import { Container, Card, Button } from 'react-bootstrap';
+import Container from 'react-bootstrap/Container';
+import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
+import { Link } from 'react-router';
 
-function SavedStations({ savedStations, onRemoveStation }) {
+function SavedStations({ savedStations, onSelectStation, onRemoveStation }) {
   return (
     <Container>
       <h2 className="mb-3">3. Saved Stations ({savedStations.length})</h2>
-      <Card className="p-3">
-        {savedStations.length === 0 ? (
-          <p className="mb-0">You have not saved any stations yet.</p>
-        ) : (
-          <ul>
-            {savedStations.map((station) => (
-              <li key={station._id} className="mb-2">
-                <strong>{station.name}</strong> ({station.exposure}){' '}
+
+      {savedStations.length === 0 ? (
+        <Card className="p-3">
+          <p className="mb-2">No saved stations yet.</p>
+          <div>
+            <Button as={Link} to="/" variant="primary" size="sm">
+              Back to Explore
+            </Button>
+          </div>
+        </Card>
+      ) : (
+        savedStations.map((station) => (
+          <Card key={station._id} className="p-3 mb-2 shadow-sm">
+            <div className="d-flex justify-content-between align-items-center">
+              <div>
+                <h5 className="mb-1">{station.name}</h5>
+                <small className="text-muted">
+                  Placement: {station.exposure} | Sensors: {station.sensors ? station.sensors.length : 0}
+                </small>
+              </div>
+
+              <div className="d-flex gap-2">
+                <Button
+                  as={Link}
+                  to="/chart"
+                  variant="primary"
+                  size="sm"
+                  onClick={() => onSelectStation(station)}
+                >
+                  Open Chart
+                </Button>
                 <Button
                   variant="outline-danger"
                   size="sm"
@@ -19,11 +45,11 @@ function SavedStations({ savedStations, onRemoveStation }) {
                 >
                   Remove
                 </Button>
-              </li>
-            ))}
-          </ul>
-        )}
-      </Card>
+              </div>
+            </div>
+          </Card>
+        ))
+      )}
     </Container>
   );
 }

@@ -12,13 +12,12 @@ function App() {
   const handleSaveStation = (station) => {
     const exists = savedStations.some((item) => item._id === station._id);
     if (!exists) {
-      setSavedStations([...savedStations, { ...station, note: '' }]);
+      setSavedStations([...savedStations, station]);
     }
   };
 
   const handleRemoveStation = (stationId) => {
-    const filtered = savedStations.filter((item) => item._id !== stationId);
-    setSavedStations(filtered);
+    setSavedStations(savedStations.filter((item) => item._id !== stationId));
   };
 
   return (
@@ -47,6 +46,7 @@ function App() {
               element={
                 <SavedStations
                   savedStations={savedStations}
+                  onSelectStation={setSelectedStation}
                   onRemoveStation={handleRemoveStation}
                 />
               }
