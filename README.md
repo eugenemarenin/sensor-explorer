@@ -1,16 +1,31 @@
-# React + Vite
+# Environmental Sensor Explorer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React single-page web application for exploring real-time environmental monitoring stations across regions in Germany and Finland using the public OpenSenseMap REST API.
 
-Currently, two official plugins are available:
+## Links
+- **Live Application (GitHub Pages):** [https://eugenemarenin.github.io/sensor-explorer/](https://eugenemarenin.github.io/sensor-explorer/)
+- **GitHub Repository:** [https://github.com/eugenemarenin/sensor-explorer](https://github.com/eugenemarenin/sensor-explorer)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features & Screens
+1. **Explore Stations (`/`):** Fetches environmental sensor stations by regional bounding boxes (`bbox`) in 4 regions in Germany and Finland, supports filtering by station name, and displays reusable station cards.
+2. **Sensor Chart (`/chart`):** Displays all sensors attached to a selected station and visualizes recent measurement history using an interactive **Recharts** line chart.
+3. **Saved Stations (`/saved`):** Allows users to bookmark stations for quick access and manage their saved list.
 
-## React Compiler
+## Technologies & Libraries Used
+- **React & Vite**
+- **React Router (`HashRouter`)** 
+- **React-Bootstrap & Bootstrap 5** 
+- **Recharts** (historical sensor data visualization)
+- **openSenseMap REST API** (real-time JSON environmental data)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## How to Run Locally
 
-## Expanding the ESLint configuration
+Clone the repository, install dependencies and start development server:
+   ```bash
+   git clone [https://github.com/eugenemarenin/sensor-explorer.git](https://github.com/eugenemarenin/sensor-explorer.git)
+   cd sensor-explorer
+   npm install
+   npm run dev
+   ```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Then open http://localhost:5173 in your browser
