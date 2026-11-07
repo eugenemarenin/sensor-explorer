@@ -22,8 +22,8 @@ function SensorChart({ selectedStation }) {
       setError(null);
 
       try {
-        const url = `https://api.opensensemap.org/boxes/${selectedStation._id}/data/${selectedSensor._id}`;
-        const res = await fetch(url);
+        const toDate = selectedSensor.lastMeasurement ? `?to-date=${selectedSensor.lastMeasurement.createdAt}` : '';
+        const url = `https://api.opensensemap.org/boxes/${selectedStation._id}/data/${selectedSensor._id}${toDate}`;        const res = await fetch(url);
 
         if (!res.ok) {
           throw new Error(`HTTP error: ${res.status}`);

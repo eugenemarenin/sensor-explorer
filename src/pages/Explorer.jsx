@@ -33,7 +33,7 @@ function Explorer({ savedStations, onSelectStation, onSaveStation }) {
         }
 
         const data = await res.json();
-        setStations(data.slice(0, 24));
+        setStations(data.reverse().slice(0, 24));
       } catch (err) {
         setError(err.message);
       } finally {
